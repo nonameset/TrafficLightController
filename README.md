@@ -1,6 +1,6 @@
 # Traffic Light Controller 🚦
 
-A modification for Grand Theft Auto V that simulates a post-apocalyptic world where zombies roam the streets of Los Santos.
+Traffic Light Controller is a modification for the video game Grand Theft Auto V. It enhances gameplay by automatically setting all traffic lights to green and stopping other vehicles whenever the player drives through an intersection with emergency lights activated on their vehicle.
 
 ## Features
 
