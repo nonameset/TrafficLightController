@@ -3,7 +3,8 @@
 
 void CPed::InitialisePatterns()
 {
-
+    m_pMyVehicle = GetRelativeReference<CVehicle>(
+            "74 0A 48 83 B8 ? ? ? ? ? 75 0A", 5, 9);
 }
 
 CPedIntelligence *CPed::GetIntelligence()

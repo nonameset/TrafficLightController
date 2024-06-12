@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "CVehicle.h"
+
 class CPedIntelligence
 {
 public:
@@ -11,8 +13,9 @@ public:
 class CPed
 {
 public:
-    CPedIntelligence* GetIntelligence();
+    inline static CVehicle* m_pMyVehicle;
     static void InitialisePatterns();
+    CPedIntelligence* GetIntelligence();
 };
 
 #endif //TRAFFICLIGHTCONTROLLER_CPED_H

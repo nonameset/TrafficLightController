@@ -1,9 +1,7 @@
 #include "Utils.h"
 #include "CPed.h"
 #include "CGameWorld.h"
-#include "CVehicle.h"
 #include "fwScriptGuid.h"
-#include "Natives.h"
 
 void OnScriptInit()
 {
@@ -23,38 +21,14 @@ void OnScriptInit()
         WAIT(0);
 
         CPed* pPlayer = (CPed*)CGameWorld::FindPlayer();
+        CVehicle* pVehicle = CVehiclePopulation::ms_pInterestingVehicle;
 
-        if (pPlayer == nullptr)
-            continue;
-
-        uint32_t playerHandle = fwScriptGuid::CreateGuid(reinterpret_cast<uint64_t*>(pPlayer));
-
-        if (IS_PED_IN_ANY_VEHICLE(playerHandle, false))
+        if (pPlayer != nullptr && pVehicle != nullptr)
         {
-            CVehicle* pVehicle = (CVehicle*)fwScriptGuid::GetBaseFromGuid(GET_VEHICLE_PED_IS_IN(playerHandle, false));
-
-            if (pVehicle == nullptr)
-                continue;
-
-            g_Logger->Info("pVehicle: %p", pVehicle);
-
-            CVehicleIntelligence* pVehIntel = pVehicle->GetIntelligence();
-
-            if (pVehIntel == nullptr)
-                continue;
-
-            g_Logger->Info("pVehIntel: %p", pVehicle);
-
-            CJunction* pJunction = pVehIntel->m_Junction;
-
-            if (pJunction == nullptr)
-                continue;
-
-            g_Logger->Info("Junction address is: %p", pJunction);
-
-            g_Logger->Info("m_fLightTimeRemaining: %f\n m_iLightPhase: %d\nm_TrafficLightCommand: %d\nm_JunctionCommand: %d", pJunction->m_fLightTimeRemaining, pJunction->m_iLightPhase, static_cast<int>(pVehIntel->m_TrafficLightCommand), static_cast<int>(pVehIntel->m_JunctionCommand));
-
-            // TODO: Implement the logic for the traffic light controller.
+            // TODO: Get current ETrafficLightCommand and EJunctionCommand from CVehicleIntelligence.
+            //     Apply new ETrafficLightCommand and EJunctionCommand to CVehicleIntelligence of vehicles waiting at traffic lights.
+            //     Will possibly have to reset values to default after a certain amount of time if it doesn't reset itself? -> More testing needed.
+            //     Find a better way to get the current vehicle of the player & if the player is in a vehicle without having to access natives through SHV...
         }
     }
 }

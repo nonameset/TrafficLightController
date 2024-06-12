@@ -7,7 +7,6 @@
 #include "CGameWorld.h"
 #include "fwScriptGuid.h"
 #include "CVehicle.h"
-#include "Natives.h"
 
 /*******************************************************/
 std::mt19937 &
@@ -116,8 +115,7 @@ InitialiseAllComponents ()
     CPed::InitialisePatterns();
     CGameWorld::InitialisePatterns();
     fwScriptGuid::InitialisePatterns();
-
-    InitialiseNatives();
+    CVehiclePopulation::InitialisePatterns();
 
     initialised = true;
 }

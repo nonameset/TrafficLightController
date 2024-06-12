@@ -45,11 +45,11 @@ public:
     CVehicleIntelligence* GetIntelligence();
 };
 
-//class CVehiclePopulation
-//{
-//public:
-//    inline static CVehicle* ms_pInterestingVehicle;
-//    static void InitialisePatterns();
-//};
+class CVehiclePopulation
+{
+public:
+    inline static CVehicle* ms_pInterestingVehicle;
+    static void InitialisePatterns();
+};
 
 #endif //TRAFFICLIGHTCONTROLLER_CVEHICLE_H

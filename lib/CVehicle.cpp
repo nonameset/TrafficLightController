@@ -9,8 +9,8 @@ CVehicleIntelligence* CVehicle::GetIntelligence()
             .get<CVehicleIntelligence*>();
 }
 
-//void CVehiclePopulation::InitialisePatterns()
-//{
-//    ms_pInterestingVehicle = GetRelativeReference<CVehicle>(
-//            "48 8B 1D ? ? ? ? 48 8B F9 48 3B D9 74 2F 48 85 DB", 3, 7);
-//}
+void CVehiclePopulation::InitialisePatterns()
+{
+    ms_pInterestingVehicle = GetRelativeReference<CVehicle>(
+            "48 8B 1D ? ? ? ? 48 8B F9 48 3B D9 74 2F 48 85 DB", 3, 7);
+}
